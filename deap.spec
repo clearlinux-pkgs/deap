@@ -4,12 +4,13 @@
 #
 Name     : deap
 Version  : 1.0.1
-Release  : 3
+Release  : 4
 URL      : https://github.com/DEAP/deap/archive/1.0.1.tar.gz
 Source0  : https://github.com/DEAP/deap/archive/1.0.1.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-3.0
+Requires: deap-legacypython
 Requires: deap-python
 BuildRequires : pbr
 BuildRequires : pip
@@ -23,9 +24,18 @@ wish to learn how to use evolutionary algorithms and to those who wish to
 rediscover evolutionary algorithms. DEAP is the proof that evolutionary
 algorithms do **not** need to be neither complex or complicated.
 
+%package legacypython
+Summary: legacypython components for the deap package.
+Group: Default
+
+%description legacypython
+legacypython components for the deap package.
+
+
 %package python
 Summary: python components for the deap package.
 Group: Default
+Requires: deap-legacypython
 
 %description python
 python components for the deap package.
@@ -35,13 +45,16 @@ python components for the deap package.
 %setup -q -n deap-1.0.1
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1493237168
+export SOURCE_DATE_EPOCH=1505001796
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1493237168
+export SOURCE_DATE_EPOCH=1505001796
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
@@ -52,7 +65,10 @@ echo ----[ mark ]----
 %files
 %defattr(-,root,root,-)
 
-%files python
+%files legacypython
 %defattr(-,root,root,-)
 /usr/lib/python2*/*
+
+%files python
+%defattr(-,root,root,-)
 /usr/lib/python3*/*
