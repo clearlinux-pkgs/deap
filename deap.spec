@@ -4,13 +4,14 @@
 #
 Name     : deap
 Version  : 1.0.1
-Release  : 4
+Release  : 5
 URL      : https://github.com/DEAP/deap/archive/1.0.1.tar.gz
 Source0  : https://github.com/DEAP/deap/archive/1.0.1.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-3.0
 Requires: deap-legacypython
+Requires: deap-python3
 Requires: deap-python
 BuildRequires : pbr
 BuildRequires : pip
@@ -27,6 +28,7 @@ algorithms do **not** need to be neither complex or complicated.
 %package legacypython
 Summary: legacypython components for the deap package.
 Group: Default
+Requires: python-core
 
 %description legacypython
 legacypython components for the deap package.
@@ -36,9 +38,19 @@ legacypython components for the deap package.
 Summary: python components for the deap package.
 Group: Default
 Requires: deap-legacypython
+Requires: deap-python3
 
 %description python
 python components for the deap package.
+
+
+%package python3
+Summary: python3 components for the deap package.
+Group: Default
+Requires: python3-core
+
+%description python3
+python3 components for the deap package.
 
 
 %prep
@@ -49,12 +61,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1505001796
+export SOURCE_DATE_EPOCH=1507153029
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1505001796
+export SOURCE_DATE_EPOCH=1507153029
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
@@ -70,5 +82,8 @@ echo ----[ mark ]----
 /usr/lib/python2*/*
 
 %files python
+%defattr(-,root,root,-)
+
+%files python3
 %defattr(-,root,root,-)
 /usr/lib/python3*/*
