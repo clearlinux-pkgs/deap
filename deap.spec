@@ -4,7 +4,7 @@
 #
 Name     : deap
 Version  : 1.0.1
-Release  : 5
+Release  : 6
 URL      : https://github.com/DEAP/deap/archive/1.0.1.tar.gz
 Source0  : https://github.com/DEAP/deap/archive/1.0.1.tar.gz
 Summary  : No detailed summary available
