@@ -14,7 +14,7 @@ Requires: deap-python3
 Requires: deap-python
 BuildRequires : pbr
 BuildRequires : pip
-BuildRequires : python-dev
+
 BuildRequires : python3-dev
 BuildRequires : setuptools
 
