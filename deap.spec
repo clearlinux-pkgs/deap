@@ -4,7 +4,7 @@
 #
 Name     : deap
 Version  : 1.2.2
-Release  : 21
+Release  : 22
 URL      : https://github.com/DEAP/deap/archive/1.2.2.tar.gz
 Source0  : https://github.com/DEAP/deap/archive/1.2.2.tar.gz
 Summary  : No detailed summary available
