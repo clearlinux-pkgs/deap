@@ -4,10 +4,10 @@
 #
 Name     : deap
 Version  : 1.3.0
-Release  : 25
+Release  : 26
 URL      : https://github.com/DEAP/deap/archive/1.3.0/deap-1.3.0.tar.gz
 Source0  : https://github.com/DEAP/deap/archive/1.3.0/deap-1.3.0.tar.gz
-Summary  : No detailed summary available
+Summary  : Distributed Evolutionary Algorithms in Python
 Group    : Development/Tools
 License  : LGPL-3.0
 Requires: deap-license = %{version}-%{release}
@@ -42,6 +42,7 @@ python components for the deap package.
 Summary: python3 components for the deap package.
 Group: Default
 Requires: python3-core
+Provides: pypi(deap)
 
 %description python3
 python3 components for the deap package.
@@ -56,7 +57,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1579206548
+export SOURCE_DATE_EPOCH=1582916202
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
