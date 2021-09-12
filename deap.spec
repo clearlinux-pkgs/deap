@@ -4,7 +4,7 @@
 #
 Name     : deap
 Version  : 1.3.0
-Release  : 36
+Release  : 37
 URL      : https://github.com/DEAP/deap/archive/1.3.0/deap-1.3.0.tar.gz
 Source0  : https://github.com/DEAP/deap/archive/1.3.0/deap-1.3.0.tar.gz
 Summary  : Distributed Evolutionary Algorithms in Python
@@ -16,6 +16,7 @@ Requires: deap-python3 = %{version}-%{release}
 Requires: numpy
 BuildRequires : buildreq-distutils3
 BuildRequires : numpy
+Patch1: 0001-Disable-use_2to3.patch
 
 %description
 # DEAP
@@ -52,13 +53,17 @@ python3 components for the deap package.
 %prep
 %setup -q -n deap-1.3.0
 cd %{_builddir}/deap-1.3.0
+%patch1 -p1
 
 %build
+## build_prepend content
+2to3 --no-diffs --write --nobackups .
+## build_prepend end
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1603389071
+export SOURCE_DATE_EPOCH=1631476686
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
